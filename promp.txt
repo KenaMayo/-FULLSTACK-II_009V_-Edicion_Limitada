@@ -1,0 +1,25 @@
+Desarrollame una página web responsive de moda/diseño de autor y venta de productos de este tipo, con uso de HTML5, CSS Bootstrap y JS, usando las mejores prácticas de la industria y con comentarios por bloques/contenedores. El proyecto tiene que tener esta estructura: assent/css, assent/js, assent/img. Y tiene que tener un formato muy similar en diseño al screeshot que e adjuntara aquí en contexto.
+
+Primero, crearemos nuestro home llamado index.html, el cual tendrá un menú con:
+
+1-Home 
+
+2-Productos
+
+2-Nosotros: este desplegará un submenú en el momento en que el mouse haga click y mostrará las categorías de "Edición Limitada" y "Diseñadores"
+
+3-Blogs: Este desplegará un submenú en el momento en que el mouse haga click y mostrará los eventos y la editorial de edición limitada.
+
+4-Contacto 
+
+Al costado derecho se encontrará un botón que diga "iniciar sesión", otro que diga "Regístrate" y luego un icono de carrito de compras
+
+Al lado izquierdo se encontrará un contenedor que tendrá el logo de Edición limitada, pero por el momento solo déjalo con un contenedor con border 1px y texto que diga "logo" centrado.
+
+Bajo este menú, se encontrara un Autoplaying carousels without controls que tiene 3 slides, el cuales serán : "Productos", "Diseñadores" "Eventos".
+
+La sección siguiente corresponde a Productos, que tendrá un enunciado que permitirá ir a un listado mas completo de más productos, pero en el index/home, se mostraran 8 productos en una sola fila pero que se mostraran a través de un carrusel con control. Cada producto tendrá que tener su imagen, nombre, diseñador y precio, además de un botón para agregar al carrito.
+
+Contendrá un footer que tendrá en su lado izquierdo un formulario para inscribirse al newspaper de Edición limitada junto con un botón que diga "suscríbete". Luego tendrá también un ul/li que tenga "Edición limitada", "Diseñadores", "Editorial" "eventos" "contacto. Tendrá también los iconos que redirigan a redes sociales de Instagram, X, Youtube y finalmente se repetirá el logo de la tienda edición limitada como decorativo.
+
+Haras uso de las librerías CDN de nube para imágenes sin derecho de autor y fonts. El color de fondo será negro, mientras que el footer será blanco. 

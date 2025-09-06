@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return `
             <div class="col-md-4">
                 <div class="designer-card">
-                    <img src="assets/img/gameover.jpg" alt="${designer}">
+                    <img src="assets/img/brands/GameOver.jpg" alt="${designer}">
                     <div class="designer-name">${designer}</div>
                 </div>
             </div>

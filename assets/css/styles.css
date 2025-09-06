@@ -12,7 +12,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* Navigation Styles */
+/* Estilos navegación */
 .navbar {
     height: 80px;
     padding: 1rem 0;
@@ -49,7 +49,7 @@ body {
     color: #ffffff;
 }
 
-/* Hero Carousel */
+/* Carrusel */
 #heroCarousel {
     margin-top: -16px;
 }
@@ -63,7 +63,7 @@ body {
     height: 100%;
 }
 
-/* Products Section */
+/* Seccion productos */
 .products-section {
     background-color: var(--dark-bg);
     padding: 4rem 0;
@@ -127,7 +127,7 @@ body {
     font-size: 1.1rem;
 }
 
-/* Footer logo styles */
+/* Footer logo estilos */
 .footer-logo {
     text-align: center;
 }
@@ -144,7 +144,7 @@ body {
     margin-top: 0.5rem;
 }
 
-/* Custom column width for 4 items per row */
+/*Columna con 4 item por fila*/
 .col-lg-3 {
     flex: 0 0 auto;
     width: 25%;
@@ -166,7 +166,7 @@ body {
     }
 }
 
-/* Footer Styles */
+/* Footer estilos */
 footer {
     background-color: #ffffff !important;
     color: #000000;
@@ -218,7 +218,7 @@ footer h5 {
     color: #888 !important;
 }
 
-/*Brand desing style*/
+/*estilo de marcas*/
 .about-section {
             min-height: calc(100vh - 400px);
         }
@@ -242,7 +242,7 @@ footer h5 {
         }
 
 
-/*Designer style*/
+/*estilo de diseñador*/
 .designers-list {
             background: rgba(255, 255, 255, 0.05);
             padding: 2rem;
@@ -314,6 +314,74 @@ footer h5 {
             font-weight: bold;
         }
 
+/*Estilos editorial*/
+.blog-card {
+            transition: transform 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        .blog-title {
+            font-size: 1.5rem;
+        }
+        .blog-category {
+            font-size: 0.9rem;
+            color: #888;
+        }
+        .blog-excerpt {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .featured-post {
+            position: relative;
+            overflow: hidden;
+        }
+        .featured-post img {
+            transition: transform 0.3s ease;
+        }
+        .featured-post:hover img {
+            transform: scale(1.05);
+        }
+
+/*Estilos eventos*/
+.event-card {
+            transition: transform 0.3s ease;
+            border: none;
+        }
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+        .event-date {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 15px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border-radius: 5px;
+        }
+        .countdown-timer {
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        .featured-event {
+            position: relative;
+            overflow: hidden;
+        }
+        .featured-event img {
+            transition: transform 0.5s ease;
+        }
+        .featured-event:hover img {
+            transform: scale(1.05);
+        }
 
 /* Theme Toggle */
 .theme-toggle {

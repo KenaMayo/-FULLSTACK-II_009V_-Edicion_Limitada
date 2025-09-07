@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diseñadores - Admin Panel</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet"/>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/styles.css"/>
+</head>
+
+<body class="admin-body">
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-header d-flex align-items-center">
+      <img src="../assets/img/Logo Edicion Limitada.png" class="sidebar-logo me-2" alt="Logo">
+      <span class="michroma-regular text-white">ADMIN PANEL</span>
+    </div>
+    <ul class="nav flex-column sidebar-nav">
+      <li class="nav-item"><a class="nav-link" href="indexAdministrador.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="productos.html"><i class="fas fa-table"></i> Productos</a></li>
+      <li class="nav-item"><a class="nav-link" href="inventario.html"><i class="fas fa-boxes"></i> Inventario</a></li>
+      <li class="nav-item"><a class="nav-link" href="clientes.html"><i class="fas fa-users"></i> Clientes</a></li>
+      <li class="nav-item"><a class="nav-link active" href="disenadores.html"><i class="fas fa-palette"></i> Diseñadores</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="main-content">
+    <!-- Header -->
+    <header class="admin-header">
+      <div class="d-flex justify-content-between align-items-center">
+        <button class="btn btn-outline-light d-md-none" id="sidebarToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <h1 class="text-white mb-0 michroma-regular">Diseñadores</h1>
+        <a href="../index.html" class="btn btn-light"><i class="fas fa-home me-1"></i> Ver Sitio Web</a>
+      </div>
+    </header>
+
+    <!-- Área de trabajo -->
+    <div class="admin-content">
+      <div class="card" style="background-color:#1a1a1a; border:1px solid #333;">
+        <div class="card-body">
+            <!-- Barra de acciones (única) -->
+            <div class="d-flex justify-content-end gap-2 mb-3">
+            <button id="btnEdit" class="btn btn-outline-warning btn-sm" disabled>
+                <i class="fas fa-edit me-1"></i> Editar
+            </button>
+            <button id="btnDelete" class="btn btn-outline-danger btn-sm" disabled>
+                <i class="fas fa-trash me-1"></i> Eliminar
+            </button>
+            </div>
+            <!-- AQUÍ se va a inyectar la grilla de 4 columnas por fila -->
+            <div id="designersGrid"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/designers.js"></script>
+  <!-- 👇 Script SOLO del admin (no el público) -->
+  <script src="../assets/js/designersadmin.js"></script>
+  <script>
+    // Toggle sidebar en móvil (por si script.js no lo maneja)
+    const btn = document.getElementById('sidebarToggle');
+    const sidebar = document.querySelector('.sidebar');
+    if (btn && sidebar) btn.addEventListener('click', () => sidebar.classList.toggle('show'));
+  </script>
+</body>
+</html>

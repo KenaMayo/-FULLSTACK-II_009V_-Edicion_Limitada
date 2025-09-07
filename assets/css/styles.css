@@ -12,7 +12,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* Estilos navegación */
+/* Navigation Styles */
 .navbar {
     height: 80px;
     padding: 1rem 0;
@@ -49,7 +49,7 @@ body {
     color: #ffffff;
 }
 
-/* Carrusel */
+/* Hero Carousel */
 #heroCarousel {
     margin-top: -16px;
 }
@@ -63,7 +63,7 @@ body {
     height: 100%;
 }
 
-/* Seccion productos */
+/* Products Section */
 .products-section {
     background-color: var(--dark-bg);
     padding: 4rem 0;
@@ -127,7 +127,7 @@ body {
     font-size: 1.1rem;
 }
 
-/* Footer logo estilos */
+/* Footer logo styles */
 .footer-logo {
     text-align: center;
 }
@@ -144,7 +144,7 @@ body {
     margin-top: 0.5rem;
 }
 
-/*Columna con 4 item por fila*/
+/* Custom column width for 4 items per row */
 .col-lg-3 {
     flex: 0 0 auto;
     width: 25%;
@@ -166,7 +166,7 @@ body {
     }
 }
 
-/* Footer estilos */
+/* Footer Styles */
 footer {
     background-color: #ffffff !important;
     color: #000000;
@@ -218,7 +218,7 @@ footer h5 {
     color: #888 !important;
 }
 
-/*estilo de marcas*/
+/*Brand desing style*/
 .about-section {
             min-height: calc(100vh - 400px);
         }
@@ -242,7 +242,7 @@ footer h5 {
         }
 
 
-/*estilo de diseñador*/
+/*Designer style*/
 .designers-list {
             background: rgba(255, 255, 255, 0.05);
             padding: 2rem;
@@ -314,74 +314,6 @@ footer h5 {
             font-weight: bold;
         }
 
-/*Estilos editorial*/
-.blog-card {
-            transition: transform 0.3s ease;
-        }
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-        .blog-title {
-            font-size: 1.5rem;
-        }
-        .blog-category {
-            font-size: 0.9rem;
-            color: #888;
-        }
-        .blog-excerpt {
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .featured-post {
-            position: relative;
-            overflow: hidden;
-        }
-        .featured-post img {
-            transition: transform 0.3s ease;
-        }
-        .featured-post:hover img {
-            transform: scale(1.05);
-        }
-
-/*Estilos eventos*/
-.event-card {
-            transition: transform 0.3s ease;
-            border: none;
-        }
-        .event-card:hover {
-            transform: translateY(-5px);
-        }
-        .event-date {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 10px 15px;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            border-radius: 5px;
-        }
-        .countdown-timer {
-            background: rgba(0, 0, 0, 0.9);
-            border-radius: 10px;
-            padding: 20px;
-        }
-        .countdown-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
-        .countdown-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-        }
-        .featured-event {
-            position: relative;
-            overflow: hidden;
-        }
-        .featured-event img {
-            transition: transform 0.5s ease;
-        }
-        .featured-event:hover img {
-            transform: scale(1.05);
-        }
 
 /* Theme Toggle */
 .theme-toggle {
@@ -402,4 +334,251 @@ footer h5 {
         margin-top: 1rem;
         justify-content: center;
     }
+}
+
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    background-color: #1a1a1a;
+    border-right: 1px solid #333;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #333;
+    background-color: #000;
+}
+
+.sidebar-logo {
+    height: 35px;
+    width: auto;
+}
+
+.sidebar-nav {
+    padding: 1rem 0;
+}
+
+.sidebar-nav .nav-link {
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    margin: 0.25rem 0;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.sidebar-nav .nav-link:hover,
+.sidebar-nav .nav-link.active {
+    background-color: #333;
+    color: #ffffff;
+    border-left: 3px solid #ffffff;
+    padding-left: 1.35rem;
+}
+
+.sidebar-nav .nav-link i {
+    width: 20px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    padding: 0 1.5rem;
+}
+
+.admin-profile-btn {
+    background-color: #333;
+    border: 1px solid #666;
+    color: #ffffff;
+    padding: 0.75rem;
+    width: 100%;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.admin-profile-btn:hover {
+    background-color: #666;
+    border-color: #999;
+    color: #ffffff;
+}
+
+/* Main Content Area */
+.main-content {
+    margin-left: 280px;
+    background-color: #000000;
+    min-height: 100vh;
+}
+
+/* Header for main content */
+.admin-header {
+    background-color: #000000;
+    border-bottom: 1px solid #333;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.admin-content {
+    padding: 2rem;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+    color: #ffffff;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    border-color: #666;
+}
+
+.dashboard-card .card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.dashboard-card .card-number {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-card .card-label {
+    color: #999;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .admin-content {
+        padding: 1rem;
+    }
+}
+
+/* Quick Actions */
+.quick-actions .btn {
+    margin: 0.25rem;
+    border-radius: 6px;
+}
+
+/* Featured Products Section in Admin */
+.admin-products-section {
+    background-color: #000000;
+    margin-top: 2rem;
+}
+
+/* Products Table Styles */
+#productsTable {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+#productsTable th {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border-color: #333 !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+#productsTable td {
+    background-color: #1a1a1a !important;
+    border-color: #333 !important;
+    vertical-align: middle;
+}
+
+#productsTable .table-striped tbody tr:nth-of-type(odd) td {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+#productsTable .table-hover tbody tr:hover td {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Badge styles for stock levels */
+.stock-badge {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+}
+
+/* Button group spacing */
+.btn-group .btn {
+    margin-right: 2px;
+}
+
+.btn-group .btn:last-child {
+    margin-right: 0;
+}
+
+/* Toast notifications positioning */
+.toast-container {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 9999;
+}
+
+/* Estilos mínimos para la vista administrador/disenadores.html */
+.designer-box {
+    position: relative;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 2.75rem 1rem 1rem; /* espacio arriba para los botones */
+    text-align: center;
+    color: #fff;
+    min-height: 110px;
+}
+.designer-box .top-actions {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    display: flex;
+    gap: .5rem;
+}
+
+.designer-box {
+background-color: #1a1a1a;
+border: 1px solid #333;
+border-radius: 8px;
+padding: 2.75rem 1rem 1rem; /* espacio por si pones algo arriba luego */
+color: #fff;
+}
+
+.designer-box.selected {
+  background-color: rgba(255,255,255,0.1);
+  outline: 1px solid #666;
 }

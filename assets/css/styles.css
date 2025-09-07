@@ -550,3 +550,35 @@ footer h5 {
     right: 20px;
     z-index: 9999;
 }
+
+/* Estilos mínimos para la vista administrador/disenadores.html */
+.designer-box {
+    position: relative;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 2.75rem 1rem 1rem; /* espacio arriba para los botones */
+    text-align: center;
+    color: #fff;
+    min-height: 110px;
+}
+.designer-box .top-actions {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    display: flex;
+    gap: .5rem;
+}
+
+.designer-box {
+background-color: #1a1a1a;
+border: 1px solid #333;
+border-radius: 8px;
+padding: 2.75rem 1rem 1rem; /* espacio por si pones algo arriba luego */
+color: #fff;
+}
+
+.designer-box.selected {
+  background-color: rgba(255,255,255,0.1);
+  outline: 1px solid #666;
+}

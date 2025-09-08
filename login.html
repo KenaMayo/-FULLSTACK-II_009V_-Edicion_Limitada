@@ -208,7 +208,18 @@
                     event.stopPropagation();
                     form.classList.add('was-validated');
                 } else {
-                    // Show success modal
+                    // Get email input value
+                    const emailInput = document.getElementById('email');
+                    const userEmail = emailInput.value.trim();
+                    
+                    // Check if email is admin email
+                    if (userEmail === 'admin@edicionlimitada.cl') {
+                        // Redirect directly to admin panel
+                        window.location.href = 'administrador/indexAdministrador.html';
+                        return;
+                    }
+                    
+                    // Show success modal for regular users
                     loginModal.show();
                     
                     // Reset form

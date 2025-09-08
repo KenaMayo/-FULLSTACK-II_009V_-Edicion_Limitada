@@ -195,44 +195,48 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- Validation Script -->
+    <!-- Validation & Routing -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('loginForm');
-            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+    document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('loginForm');
+    const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
 
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-                
-                if (!form.checkValidity()) {
-                    event.stopPropagation();
-                    form.classList.add('was-validated');
-                } else {
-                    // Get email input value
-                    const emailInput = document.getElementById('email');
-                    const userEmail = emailInput.value.trim();
-                    
-                    // Check if email is admin email
-                    if (userEmail === 'admin@edicionlimitada.cl') {
-                        // Redirect directly to admin panel
-                        window.location.href = 'administrador/indexAdministrador.html';
-                        return;
-                    }
-                    
-                    // Show success modal for regular users
-                    loginModal.show();
-                    
-                    // Reset form
-                    form.reset();
-                    form.classList.remove('was-validated');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-                    // Redirect after modal is closed
-                    document.getElementById('loginModal').addEventListener('hidden.bs.modal', function () {
-                        window.location.href = 'index.html';
-                    });
-                }
-            });
-        });
+        if (!form.checkValidity()) {
+        event.stopPropagation();
+        form.classList.add('was-validated');
+        return;
+        }
+
+        const emailInput = document.getElementById('email');
+        const email = emailInput.value.trim().toLowerCase();
+
+        // Admin (acepta ambos dominios por si acaso)
+        if (email === 'admin@edicionlimitada.cl') {
+        window.location.href = 'administrador/indexAdministrador.html';
+        return;
+        }
+
+        // Vendedor
+        if (email === 'vendedor@edicionlimitada.cl') {
+        // Si dejaste las vistas en "administrador/", usa: 'administrador/indexVendedor.html'
+        window.location.href = 'vendedor/indexVendedor.html';
+        return;
+        }
+
+        // Usuario normal: muestra modal y luego redirige al home
+        loginModal.show();
+        form.reset();
+        form.classList.remove('was-validated');
+
+        document.getElementById('loginModal').addEventListener('hidden.bs.modal', function () {
+        window.location.href = 'index.html';
+        }, { once: true }); // evita agregar múltiples listeners
+    });
+    });
     </script>
+
 </body>
 </html>

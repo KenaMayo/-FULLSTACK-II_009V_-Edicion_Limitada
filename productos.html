@@ -1,137 +1,178 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos - Edición Limitada</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Productos - Edición Limitada</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
-    <!-- Barra Navegación -->
-    <header class="fixed-top">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <!-- Logo Container -->
-                <a href="index.html" class="text-decoration-none">
-                    <div class="logo-container d-flex align-items-center">
-                        <img src="assets/img/Logo Edicion Limitada.png" alt="Logo Edición Limitada" class="navbar-logo me-2">
-                        <span class="michroma-regular text-white">EDICION LIMITADA</span>
-                    </div>
-                </a>
+  <!-- Barra Navegación -->
+  <header class="fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <!-- Logo Container -->
+        <a href="index.html" class="text-decoration-none">
+          <div class="logo-container d-flex align-items-center">
+            <img src="assets/img/Logo Edicion Limitada.png" alt="Logo Edición Limitada" class="navbar-logo me-2">
+            <span class="michroma-regular text-white">EDICION LIMITADA</span>
+          </div>
+        </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-                <div class="collapse navbar-collapse" id="navbarMain">
-                    <!-- Botones navegación -->
-                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="productos.html">Productos</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="nosotrosDropdown" data-bs-toggle="dropdown">
-                                Nosotros
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="edicionlimitada.html">Edición Limitada</a></li>
-                                <li><a class="dropdown-item" href="disenadores.html">Diseñadores</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="blogsDropdown" data-bs-toggle="dropdown">
-                                Blogs
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="eventos.html">Eventos</a></li>
-                                <li><a class="dropdown-item" href="editorial.html">Editorial</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contacto.html">Contacto</a>
-                        </li>
-                    </ul>
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <!-- Botones navegación -->
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="productos.html">Productos</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="nosotrosDropdown" data-bs-toggle="dropdown">
+                Nosotros
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="edicionlimitada.html">Edición Limitada</a></li>
+                <li><a class="dropdown-item" href="disenadores.html">Diseñadores</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="blogsDropdown" data-bs-toggle="dropdown">
+                Blogs
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="eventos.html">Eventos</a></li>
+                <li><a class="dropdown-item" href="editorial.html">Editorial</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+          </ul>
 
-                    <!-- Botones Gestión de Sesión -->
-                    <div class="d-flex align-items-center">
-                        <a href="login.html" class="btn btn-outline-light me-2">Iniciar Sesión</a>
-                        <a href="registro.html" class="btn btn-light me-3">Regístrate</a>
-                        <button class="btn btn-link text-light" id="cartButton">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Grilla Productos -->
-    <section class="products-grid py-5 mt-5">
-        <div class="container">
-            <div class="row g-4">
-                <!-- Los productos se cargarán dinámicamente desde products.js -->
-            </div>
+          <!-- Botones Gestión de Sesión -->
+          <div class="d-flex align-items-center">
+            <a href="login.html" class="btn btn-outline-light me-2">Iniciar Sesión</a>
+            <a href="registro.html" class="btn btn-light me-3">Regístrate</a>
+            <button class="btn btn-link text-light" id="cartButton" aria-label="Abrir carrito">
+              <i class="fas fa-shopping-cart"></i>
+            </button>
+          </div>
         </div>
-    </section>
+      </div>
+    </nav>
+  </header>
 
-    <!-- Footer -->
-    <footer class="bg-white py-5">
-        <div class="container">
-            <div class="row">
-                <!-- Formulario de Subscripción-->
-                <div class="col-md-4">
-                    <h5>Suscríbete a nuestro Newsletter</h5>
-                    <form class="newsletter-form">
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Tu email">
-                            <button class="btn btn-dark" type="submit">Suscríbete</button>
-                        </div>
-                    </form>
-                </div>
+  <!-- Grilla Productos -->
+  <section class="products-grid py-5 mt-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Los productos se cargarán dinámicamente desde assets/js/products.js -->
+      </div>
+    </div>
+  </section>
 
-                <!-- Quick Links -->
-                <div class="col-md-4">
-                    <h5>Información</h5>
-                    <ul class="list-unstyled footer-links">
-                        <li><a href="#">Edición Limitada</a></li>
-                        <li><a href="#">Diseñadores</a></li>
-                        <li><a href="#">Editorial</a></li>
-                        <li><a href="#">Eventos</a></li>
-                        <li><a href="#">Contacto</a></li>
-                    </ul>
-                </div>
+  <!-- ======= OFFCANVAS CARRITO ======= -->
+  <div class="offcanvas offcanvas-end bg-dark text-white" id="cartOffcanvas" tabindex="-1" aria-labelledby="cartOffcanvasLabel">
+    <div class="offcanvas-header border-bottom border-secondary">
+      <h5 class="offcanvas-title michroma-regular" id="cartOffcanvasLabel">
+        <i class="fas fa-shopping-cart me-2"></i> Tu carrito
+      </h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="list-group list-group-flush" id="cartItems"><!-- items dinámicos --></ul>
+    </div>
+    <div class="px-3 pb-3">
+      <div class="d-flex justify-content-between align-items-center border-top border-secondary pt-3">
+        <span class="text-muted">Total</span>
+        <strong id="cartTotal">$0</strong>
+      </div>
+      <button class="btn btn-light w-100 mt-3" disabled>Comprar (demo)</button>
+    </div>
+  </div>
 
-                <!-- Social Media & Logo -->
-                <div class="col-md-4 text-center">
-                    <div class="social-links mb-3">
-                        <a href="#" class="text-dark mx-2"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-dark mx-2"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-dark mx-2"><i class="fab fa-youtube"></i></a>
-                    </div>
-                    <div class="footer-logo d-flex flex-column align-items-center">
-                        <img src="assets/img/Logo Edicion Limitada.png" alt="Logo Edición Limitada" class="footer-logo-img">
-                        <span class="michroma-regular mt-2">EDICION LIMITADA</span>
-                    </div>
-                </div>
-            </div>
+  <!-- ======= MODAL DETALLES PRODUCTO ======= -->
+  <div class="modal fade" id="productDetailsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark text-white border border-secondary">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title michroma-regular" id="pdTitle">Detalles del producto</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
-    </footer>
+        <div class="modal-body" id="pdBody"><!-- contenido dinámico --></div>
+        <div class="modal-footer border-secondary">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-outline-info text-white" id="pdAddBtn">
+            <i class="fas fa-cart-plus me-1"></i> Añadir al carrito
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/products.js"></script>
+  <!-- Footer -->
+  <footer class="bg-white py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Formulario de Subscripción-->
+        <div class="col-md-4">
+          <h5>Suscríbete a nuestro Newsletter</h5>
+          <form class="newsletter-form">
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Tu email">
+              <button class="btn btn-dark" type="submit">Suscríbete</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-md-4">
+          <h5>Información</h5>
+          <ul class="list-unstyled footer-links">
+            <li><a href="#">Edición Limitada</a></li>
+            <li><a href="#">Diseñadores</a></li>
+            <li><a href="#">Editorial</a></li>
+            <li><a href="#">Eventos</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media & Logo -->
+        <div class="col-md-4 text-center">
+          <div class="social-links mb-3">
+            <a href="#" class="text-dark mx-2"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-dark mx-2"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-dark mx-2"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div class="footer-logo d-flex flex-column align-items-center">
+            <img src="assets/img/Logo Edicion Limitada.png" alt="Logo Edición Limitada" class="footer-logo-img">
+            <span class="michroma-regular mt-2">EDICION LIMITADA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Mantén este orden: main.js (si lo usas) y luego products.js -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/products.js"></script>
 </body>
 </html>

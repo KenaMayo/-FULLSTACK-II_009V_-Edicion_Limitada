@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inventario - Admin Panel</title>
+  <title>Inventario s- Admin Panel</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -54,47 +54,261 @@
     </ul>
   </nav>
 
-  <!-- Contenido principal -->
-  <div class="main-content">
-    <!-- Header -->
-    <header class="admin-header">
-      <div class="d-flex justify-content-between align-items-center">
-        <!-- Toggle sidebar en móvil -->
-        <button class="btn btn-outline-light d-md-none" id="sidebarToggle">
-          <i class="fas fa-bars"></i>
-        </button>
+    <!-- Contenido principal -->
+    <div class="main-content">
+      <!-- Header -->
+      <header class="admin-header">
+        <div class="d-flex justify-content-between align-items-center">
+          <!-- Toggle sidebar en móvil -->
+          <button class="btn btn-outline-light d-md-none" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+          </button>
 
-        <h1 class="text-white mb-0 michroma-regular">Inventario</h1>
+          <h1 class="text-white mb-0 michroma-regular">Inventario</h1>
 
-        <a href="../index.html" class="btn btn-light">
-          <i class="fas fa-home me-1"></i> Ver Sitio Web
-        </a>
-      </div>
-    </header>
+          <a href="../index.html" class="btn btn-light">
+            <i class="fas fa-home me-1"></i> Ver Sitio Web
+          </a>
+        </div>
+      </header>
 
-    <!-- Área de trabajo -->
+<!-- ===== CONTENIDO DEL INVENTARIO: Tabla estática de productos ===== -->
     <div class="admin-content">
-      <div class="card bg-dark border-light text-center p-5">
-        <i class="fas fa-boxes fa-5x mb-4 text-muted"></i>
-        <h3 class="text-white">Gestión de Inventario</h3>
-        <p class="text-muted">Aquí se implementará la funcionalidad.</p>
-        <button class="btn btn-outline-primary">Desarrollar Funcionalidad</button>
-      </div>
-    </div>
-  </div>
+      <div class="card" style="background-color:#1a1a1a; border:1px solid #333;">
+        <div class="card-body">
+          <h5 class="card-title text-white mb-3">
+            <i class="fas fa-table me-2"></i> Tabla de Inventario
+          </h5>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/script.js"></script>
-  <script>
-    // Toggle sidebar en móvil (si no lo maneja script.js)
-    const toggleBtn = document.getElementById('sidebarToggle');
-    const sidebar = document.querySelector('.sidebar');
-    if (toggleBtn && sidebar) {
-      toggleBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('show');
-      });
-    }
-  </script>
-</body>
+          <div class="table-responsive table-scroll">
+            <table id="productsTable" class="table table-dark table-striped table-hover align-middle">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Imagen</th>
+                  <th>Nombre</th>
+                  <th>Diseñador</th>
+                  <th>Precio</th>
+                  <th>Stock</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Fila 1 -->
+                <tr>
+                  <td>1</td>
+                  <td style="width:70px">
+                    <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Mono Lycra" class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;">
+                  </td>
+                  <td>Mono Lycra</td>
+                  <td>Vnneno</td>
+                  <td>$20.000</td>
+                  <td>10</td>
+                  <td>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button>
+                      <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                    </div>
+                  </td>
+                </tr>
+                <!-- Fila 2 -->
+                <tr>
+                  <td>2</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt='Vestido Malla "Harness.azul"' class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Vestido Malla "Harness.azul"</td>
+                  <td>Valentina Gaymer</td>
+                  <td>$34.990</td>
+                  <td>5</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 3 -->
+                <tr>
+                  <td>3</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt='Poleron "Heavenly"' class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Poleron "Heavenly"</td>
+                  <td>Incorrecta</td>
+                  <td>$44.990</td>
+                  <td>8</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 4 -->
+                <tr>
+                  <td>4</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt='Abrigo "Antología"' class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Abrigo "Antología"</td>
+                  <td>Caro Moya</td>
+                  <td>$150.000</td>
+                  <td>3</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 5 -->
+                <tr>
+                  <td>5</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt='Polera "Eyes yamirajin"' class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Polera "Eyes yamirajin"</td>
+                  <td>Kuro Archives</td>
+                  <td>$20.000</td>
+                  <td>15</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 6 -->
+                <tr>
+                  <td>6</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Multizipper jorts" class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Multizipper jorts</td>
+                  <td>Kuro Archives</td>
+                  <td>$45.000</td>
+                  <td>7</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 7 -->
+                <tr>
+                  <td>7</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt='Abrigo "Patria Rojo"' class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Abrigo "Patria Rojo"</td>
+                  <td>Lisauskas</td>
+                  <td>$69.990</td>
+                  <td>4</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 8 -->
+                <tr>
+                  <td>8</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Collar mini Kitsune Desigual" class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Collar mini Kitsune Desigual</td>
+                  <td>Mitsuki Studios</td>
+                  <td>$35.000</td>
+                  <td>20</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 9 -->
+                <tr>
+                  <td>9</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Corbatas 1/1" class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Corbatas 1/1</td>
+                  <td>KAZÚ</td>
+                  <td>$28.000</td>
+                  <td>12</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 10 -->
+                <tr>
+                  <td>10</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Corsét" class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Corsét</td>
+                  <td>ALTER</td>
+                  <td>$39.990</td>
+                  <td>6</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 11 -->
+                <tr>
+                  <td>11</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Pant Legacy Origen" class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Pant Legacy Origen</td>
+                  <td>GAMEOVER</td>
+                  <td>$74.000</td>
+                  <td>8</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 12 -->
+                <tr>
+                  <td>12</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt='Blazer "Visage"' class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Blazer "Visage"</td>
+                  <td>Caro Moya</td>
+                  <td>$78.990</td>
+                  <td>5</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 13 -->
+                <tr>
+                  <td>13</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Poleron Angel" class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Poleron Angel</td>
+                  <td>ALTER</td>
+                  <td>$159.990</td>
+                  <td>3</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 14 -->
+                <tr>
+                  <td>14</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Poleron Toroide / Tarab" class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Poleron Toroide / Tarab</td>
+                  <td>Lena Freestyle</td>
+                  <td>$78.000</td>
+                  <td>7</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 15 -->
+                <tr>
+                  <td>15</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Chaqueta Legacy Origen" class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Chaqueta Legacy Origen</td>
+                  <td>GAMEROVER</td>
+                  <td>$110.000</td>
+                  <td>4</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 16 -->
+                <tr>
+                  <td>16</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Corset Ginebra" class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Corset Ginebra</td>
+                  <td>Hurga</td>
+                  <td>$59.990</td>
+                  <td>9</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 17 -->
+                <tr>
+                  <td>17</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Collar Smile Skull" class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Collar Smile Skull</td>
+                  <td>Sin Etiquetas</td>
+                  <td>$15.990</td>
+                  <td>25</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 18 -->
+                <tr>
+                  <td>18</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt='Poleron "Flower"' class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Poleron "Flower"</td>
+                  <td>Happy Berry</td>
+                  <td>$59.990</td>
+                  <td>6</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 19 -->
+                <tr>
+                  <td>19</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Polera Ribbon" class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Polera Ribbon</td>
+                  <td>Josefina Collection</td>
+                  <td>$39.990</td>
+                  <td>10</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+                <!-- Fila 20 -->
+                <tr>
+                  <td>20</td>
+                  <td><img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Falda Asimetrica" class="img-fluid rounded" style="height:56px;width:56px;object-fit:cover;"></td>
+                  <td>Falda Asimetrica</td>
+                  <td>Kazú</td>
+                  <td>$59.990</td>
+                  <td>8</td>
+                  <td><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i> Editar</button><button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Eliminar</button></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- /admin-content -->
+  </div><!-- /main-content -->
+
+  </body>
 </html>

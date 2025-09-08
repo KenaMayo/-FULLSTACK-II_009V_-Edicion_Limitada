@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Productos - Admin Panel</title>
+  <title>Panel de Administrador - Edición Limitada</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -14,15 +14,167 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet"/>
 
-  <!-- Custom CSS (ruta desde /administrador hacia /assets) -->
+  <!-- Custom CSS (desde /administrador hacia /assets) -->
   <link rel="stylesheet" href="../assets/css/styles.css"/>
+
+  <!-- Scroll para tabla + header sticky (inline para que funcione sin tocar tu CSS) -->
+  <style>
+    .table-scroll {
+      max-height: calc(100vh - 260px);
+      overflow-y: auto;
+    }
+    .table-scroll thead th {
+      position: sticky;
+      top: 0;
+      background-color: #000000;
+      z-index: 1;
+    }
+
+    /* Estilos para las tarjetas de productos del administrador */
+    .product-card-admin {
+      background: #1a1a1a;
+      border-radius: 8px;
+      border: 1px solid #333;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      min-height: 420px; /* Altura mínima fija para uniformidad */
+    }
+
+    .product-card-admin:hover {
+      transform: translateY(-3px);
+      border-color: #555;
+    }
+
+    .product-card-admin .product-image {
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .product-card-admin .p-3 {
+      padding: 1rem !important;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    .product-card-admin h6 {
+      color: #ffffff;
+      font-weight: 600;
+      margin-bottom: 0.5rem !important;
+      min-height: 2.4em; /* Altura mínima para 2 líneas */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-card-admin .text-muted {
+      color: #adb5bd !important;
+      margin-bottom: 0.5rem !important;
+      font-size: 0.9rem;
+    }
+
+    .product-card-admin .fw-bold {
+      color: #28a745;
+      font-size: 1.1rem;
+      font-weight: 700 !important;
+      margin-bottom: 1rem !important;
+    }
+
+    /* Contenedor de botones con altura fija */
+    .product-card-admin .d-flex {
+      margin-top: auto;
+      gap: 0.5rem;
+      align-items: stretch;
+    }
+
+    .product-card-admin .btn {
+      font-size: 0.85rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .product-card-admin .btn-outline-warning {
+      border-color: #ffc107;
+      color: #ffc107;
+      background-color: transparent;
+    }
+
+    .product-card-admin .btn-outline-warning:hover {
+      background-color: #ffc107;
+      color: #000000;
+      border-color: #ffc107;
+    }
+
+    .product-card-admin .btn-outline-danger {
+      border-color: #dc3545;
+      color: #dc3545;
+      background-color: transparent;
+    }
+
+    .product-card-admin .btn-outline-danger:hover {
+      background-color: #dc3545;
+      color: #ffffff;
+      border-color: #dc3545;
+    }
+
+    .product-card-admin .btn i {
+      margin-right: 0.4rem;
+      font-size: 0.9rem;
+    }
+
+    /* Media queries para responsividad */
+    @media (max-width: 991.98px) {
+      .product-card-admin .btn-text {
+        display: none;
+      }
+      
+      .product-card-admin .btn i {
+        margin-right: 0;
+      }
+      
+      .product-card-admin .btn {
+        padding: 0.5rem;
+        min-width: 40px;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .product-card-admin {
+        min-height: 380px;
+      }
+      
+      .product-card-admin .product-image {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .product-card-admin {
+        min-height: 360px;
+      }
+      
+      .product-card-admin .product-image {
+        height: 180px;
+      }
+    }
+  </style>
 </head>
+
 <body class="admin-body">
 
   <!-- Sidebar -->
   <nav class="sidebar">
     <div class="sidebar-header d-flex align-items-center">
-      <img src="../assets/img/Logo Edicion Limitada.png" class="sidebar-logo me-2" alt="Logo"/>
+      <img src="../assets/img/Logo Edicion Limitada.png" class="sidebar-logo me-2" alt="Logo">
       <span class="michroma-regular text-white">ADMIN PANEL</span>
     </div>
     <ul class="nav flex-column sidebar-nav">
@@ -52,115 +204,419 @@
         </a>
       </li>
     </ul>
+    <div class="sidebar-footer">
+      <button class="admin-profile-btn btn" type="button">
+        <i class="fas fa-user-cog me-2"></i> Perfil Administrador
+      </button>
+    </div>
   </nav>
 
-  <!-- Contenido principal -->
+  <!-- Main Content -->
   <div class="main-content">
     <!-- Header -->
     <header class="admin-header">
       <div class="d-flex justify-content-between align-items-center">
-        <!-- Toggle sidebar en móvil -->
-        <button class="btn btn-outline-light d-md-none" id="sidebarToggle">
+        <!-- Botón para mostrar/ocultar sidebar en móvil -->
+        <button class="btn btn-outline-light d-md-none" id="sidebarToggle" aria-label="Abrir/cerrar menú">
           <i class="fas fa-bars"></i>
         </button>
 
+        <!-- Título -->
         <h1 class="text-white mb-0 michroma-regular">Productos</h1>
 
-        <a href="../index.html" class="btn btn-light">
-          <i class="fas fa-home me-1"></i> Ver Sitio Web
-        </a>
+        <!-- Acciones -->
+        <div class="d-flex align-items-center">
+          <div class="dropdown me-3">
+            <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              <i class="fas fa-bell me-1"></i> Notificaciones
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#">5 nuevos pedidos</a></li>
+              <li><a class="dropdown-item" href="#">Stock bajo en 3 productos</a></li>
+              <li><a class="dropdown-item" href="#">Nuevo diseñador registrado</a></li>
+            </ul>
+          </div>
+          <a href="../index.html" class="btn btn-light">
+            <i class="fas fa-home me-1"></i> Ver Sitio Web
+          </a>
+        </div>
       </div>
     </header>
 
-    <!-- Área de trabajo -->
+    <!-- ===== CONTENIDO DE PRODUCTOS: Tarjetas de productos (5 por fila XL), sin stock ===== -->
     <div class="admin-content">
       <div class="card" style="background-color:#1a1a1a; border:1px solid #333;">
         <div class="card-body">
-          <div class="d-flex flex-wrap gap-2 justify-content-between mb-3">
-            <button class="btn btn-success" onclick="addNewProduct()">
-              <i class="fas fa-plus me-2"></i> Nuevo
-            </button>
-            <div class="d-flex flex-wrap gap-2">
-              <button class="btn btn-outline-secondary" onclick="refreshProductsTable()">
-                <i class="fas fa-rotate me-2"></i> Refrescar
-              </button>
-              <button class="btn btn-info" onclick="exportProductsData()">
-                <i class="fas fa-file-export me-2"></i> Exportar
-              </button>
+          <h5 class="card-title text-white mb-4">
+            <i class="fas fa-layer-group me-2"></i> Productos
+          </h5>
+
+          <!-- Grid centrado: hasta 5 columnas en XL -->
+          <div class="row justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
+            <!-- Card 1 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Mono Lycra" class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Mono Lycra</h6>
+                  <p class="text-muted mb-1">Vnneno</p>
+                  <p class="fw-bold mb-3">$20.000</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill">
+                      <i class="fa-solid fa-pen"></i>
+                      <span class="btn-text"> Editar</span>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill">
+                      <i class="fa-solid fa-trash"></i>
+                      <span class="btn-text"> Eliminar</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="table-responsive">
-            <table class="table table-dark table-striped table-hover align-middle" id="productsTable">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Imagen</th>
-                  <th>Nombre</th>
-                  <th>Diseñador</th>
-                  <th>Precio</th>
-                  <th>Stock</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tbody id="productsTableBody">
-                <!-- Rellenado dinámicamente por products.js -->
-              </tbody>
-            </table>
-          </div>
+            <!-- Card 2 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt='Vestido Malla "Harness.azul"' class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Vestido Malla "Harness.azul"</h6>
+                  <p class="text-muted mb-1">Valentina Gaymer</p>
+                  <p class="fw-bold mb-3">$34.990</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-          <div class="mt-3">
-            <p class="text-muted mb-1">
-              Total de productos:
-              <span id="totalProducts" class="fw-bold text-white">0</span>
-            </p>
-            <p class="text-muted mb-0">
-              Valor inventario:
-              <span id="totalInventoryValue" class="fw-bold text-success">$0</span>
-            </p>
-          </div>
+            <!-- Card 3 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt='Poleron "Heavenly"' class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Poleron "Heavenly"</h6>
+                  <p class="text-muted mb-1">Incorrecta</p>
+                  <p class="fw-bold mb-3">$44.990</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt='Abrigo "Antología"' class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Abrigo "Antología"</h6>
+                  <p class="text-muted mb-1">Caro Moya</p>
+                  <p class="fw-bold mb-3">$150.000</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt='Polera "Eyes yamirajin"' class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Polera "Eyes yamirajin"</h6>
+                  <p class="text-muted mb-1">Kuro Archives</p>
+                  <p class="fw-bold mb-3">$20.000</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Multizipper jorts" class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Multizipper jorts</h6>
+                  <p class="text-muted mb-1">Kuro Archives</p>
+                  <p class="fw-bold mb-3">$45.000</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt='Abrigo "Patria Rojo"' class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Abrigo "Patria Rojo"</h6>
+                  <p class="text-muted mb-1">Lisauskas</p>
+                  <p class="fw-bold mb-3">$69.990</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Collar mini Kitsune Desigual" class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Collar mini Kitsune Desigual</h6>
+                  <p class="text-muted mb-1">Mitsuki Studios</p>
+                  <p class="fw-bold mb-3">$35.000</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 9 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Corbatas 1/1" class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Corbatas 1/1</h6>
+                  <p class="text-muted mb-1">KAZÚ</p>
+                  <p class="fw-bold mb-3">$28.000</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 10 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Corsét" class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Corsét</h6>
+                  <p class="text-muted mb-1">ALTER</p>
+                  <p class="fw-bold mb-3">$39.990</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 11 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Pant Legacy Origen" class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Pant Legacy Origen</h6>
+                  <p class="text-muted mb-1">GAMEOVER</p>
+                  <p class="fw-bold mb-3">$74.000</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 12 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt='Blazer "Visage"' class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Blazer "Visage"</h6>
+                  <p class="text-muted mb-1">Caro Moya</p>
+                  <p class="fw-bold mb-3">$78.990</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 13 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Poleron Angel" class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Poleron Angel</h6>
+                  <p class="text-muted mb-1">ALTER</p>
+                  <p class="fw-bold mb-3">$159.990</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 14 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Poleron Toroide / Tarab" class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Poleron Toroide / Tarab</h6>
+                  <p class="text-muted mb-1">Lena Freestyle</p>
+                  <p class="fw-bold mb-3">$78.000</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 15 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Chaqueta Legacy Origen" class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Chaqueta Legacy Origen</h6>
+                  <p class="text-muted mb-1">GAMEROVER</p>
+                  <p class="fw-bold mb-3">$110.000</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 16 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Corset Ginebra" class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Corset Ginebra</h6>
+                  <p class="text-muted mb-1">Hurga</p>
+                  <p class="fw-bold mb-3">$59.990</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 17 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Collar Smile Skull" class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Collar Smile Skull</h6>
+                  <p class="text-muted mb-1">Sin Etiquetas</p>
+                  <p class="fw-bold mb-3">$15.990</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 18 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt='Poleron "Flower"' class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Poleron "Flower"</h6>
+                  <p class="text-muted mb-1">Happy Berry</p>
+                  <p class="fw-bold mb-3">$59.990</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 19 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Polera Ribbon" class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Polera Ribbon</h6>
+                  <p class="text-muted mb-1">Josefina Collection</p>
+                  <p class="fw-bold mb-3">$39.990</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 20 -->
+            <div class="col">
+              <div class="product-card product-card-admin h-100">
+                <img src="../assets/img/products/josefinacollection-PoleraRibbons.jpeg" alt="Falda Asimetrica" class="product-image w-100">
+                <div class="p-3">
+                  <h6 class="mb-1">Falda Asimetrica</h6>
+                  <p class="text-muted mb-1">Kazú</p>
+                  <p class="fw-bold mb-3">$59.990</p>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill"><i class="fa-solid fa-pen"></i> Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-fill"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /row -->
         </div>
       </div>
-    </div>
-    <!-- /admin-content -->
-  </div>
-  <!-- /main-content -->
+    </div><!-- /admin-content -->
+  </div><!-- /main-content -->
 
-  <!-- Toasts -->
-  <div class="toast-container"></div>
-
-  <!-- Scripts -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <!-- JS del proyecto (rutas relativas correctas desde /administrador) -->
-  <script src="../assets/js/products.js"></script>
-  <script src="../assets/js/script.js"></script>
-
-  <!-- Init -->
+  <!-- Script temporal para actualizar botones -->
   <script>
-    // Render inicial de la tabla de productos
-    document.addEventListener('DOMContentLoaded', () => {
-      if (typeof displayProductsTable === 'function') {
-        displayProductsTable();
-      }
-
-      // Soporte para el toggle de la sidebar en móvil (si no lo maneja script.js)
-      const toggleBtn = document.getElementById('sidebarToggle');
-      const sidebar = document.querySelector('.sidebar');
-      if (toggleBtn && sidebar) {
-        toggleBtn.addEventListener('click', () => {
-          sidebar.classList.toggle('show');
-        });
-      }
+    document.addEventListener('DOMContentLoaded', function() {
+      // Encontrar todos los botones que no tienen la clase btn-text ya aplicada
+      const buttons = document.querySelectorAll('.product-card-admin .btn');
+      
+      buttons.forEach(button => {
+        // Solo procesar botones que no han sido actualizados
+        if (!button.querySelector('.btn-text')) {
+          const icon = button.querySelector('i');
+          const text = button.textContent.trim();
+          
+          // Limpiar el contenido del botón
+          button.innerHTML = '';
+          
+          // Agregar el icono de vuelta
+          if (icon) {
+            button.appendChild(icon);
+          }
+          
+          // Crear el span para el texto
+          const textSpan = document.createElement('span');
+          textSpan.className = 'btn-text';
+          textSpan.textContent = text.replace(/^\s*/, ' '); // Agregar espacio al inicio
+          button.appendChild(textSpan);
+        }
+      });
     });
-
-    // Helper opcional si no existe en products.js
-    function refreshProductsTable() {
-      if (typeof displayProductsTable === 'function') {
-        displayProductsTable();
-      }
-    }
   </script>
+
 </body>
 </html>

@@ -23,8 +23,10 @@
   <!-- Sidebar -->
   <nav class="sidebar">
     <div class="sidebar-header d-flex align-items-center">
-      <img src="../assets/img/Logo Edicion Limitada.png" class="sidebar-logo me-2" alt="Logo">
-      <span class="michroma-regular text-white">ADMIN PANEL</span>
+      <a href="indexAdministrador.html" class="d-flex align-items-center text-decoration-none">
+        <img src="../assets/img/Logo Edicion Limitada.png" class="sidebar-logo me-2" alt="Logo">
+        <span class="michroma-regular text-white">ADMIN PANEL</span>
+      </a>
     </div>
     <ul class="nav flex-column sidebar-nav">
       <li class="nav-item">
@@ -54,9 +56,17 @@
       </li>
     </ul>
     <div class="sidebar-footer">
-      <button class="admin-profile-btn btn" onclick="openAdminProfile()">
-        <i class="fas fa-user-cog me-2"></i> Perfil Administrador
-      </button>
+      <div class="dropdown">
+        <button class="admin-profile-btn btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user-cog me-2"></i> Perfil Administrador
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Ver Perfil</a></li>
+          <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Configuración</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="../login.html"><i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -85,7 +95,7 @@
               <li><a class="dropdown-item" href="#">Nuevo diseñador registrado</a></li>
             </ul>
           </div>
-          <a href="../index.html" class="btn btn-light">
+          <a href="../index.html" class="btn btn-light" target="_blank">
             <i class="fas fa-home me-1"></i> Ver Sitio Web
           </a>
         </div>
@@ -106,7 +116,7 @@
         <div class="col-12 col-sm-6 col-lg-3">
           <div class="dashboard-card">
             <div class="card-icon"><i class="fas fa-box"></i></div>
-            <div class="card-number">45</div>
+            <div class="card-number">20</div>
             <div class="card-label">Productos Activos</div>
           </div>
         </div>
@@ -120,7 +130,7 @@
         <div class="col-12 col-sm-6 col-lg-3">
           <div class="dashboard-card">
             <div class="card-icon"><i class="fas fa-palette"></i></div>
-            <div class="card-number">12</div>
+            <div class="card-number">28</div>
             <div class="card-label">Diseñadores Activos</div>
           </div>
         </div>
@@ -141,10 +151,11 @@
                 <a href="disenadores.html" class="btn btn-outline-success">
                   <i class="fas fa-user-plus me-1"></i> Agregar Diseñador
                 </a>
-                <a href="productos.html" class="btn btn-outline-warning">
-                  <i class="fas fa-eye me-1"></i> Ver Pedidos Pendientes
+                <a href="inventario.html" class="btn btn-outline-warning">
+                  <i class="fas fa-eye me-1"></i> Ver Stock de Productos
                 </a>
-                <button class="btn btn-outline-info" id="btnGenerarReporte">
+                <button class="btn btn-outline-info" id="btnGenerarReporte"
+                  data-bs-toggle="modal" data-bs-target="#reporteModal">
                   <i class="fas fa-chart-bar me-1"></i> Generar Reporte
                 </button>
               </div>
@@ -153,18 +164,39 @@
         </div>
       </div>
 
-      <!-- Productos destacados (vista usuario) -->
+      <!-- Modal: Reporte generado -->
+      <div class="modal fade modal-el" id="reporteModal" tabindex="-1" aria-labelledby="reporteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title michroma-regular" id="reporteModalLabel">
+                <i class="fas fa-check-circle me-2 text-success"></i> Reporte generado
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+              <p class="modal-message">El reporte fue generado correctamente.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Productos con Bajo Stock - Alertas -->
       <div class="admin-products-section">
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h2 class="text-light">
-            <i class="fas fa-star me-2"></i> Productos Destacados (Vista Usuario)
+            <i class="fas fa-exclamation-triangle me-2 text-warning"></i> Productos con Bajo Stock
           </h2>
           <div>
-            <button class="btn btn-outline-light me-2">
-              <i class="fas fa-edit me-1"></i> Editar Destacados
+            <button class="btn btn-outline-warning me-2">
+              <i class="fas fa-refresh me-1"></i> Actualizar Stock
             </button>
-            <a href="productos.html" class="btn btn-outline-light" target="_blank">
-              Ver Página de Productos
+            <a href="inventario.html" class="btn btn-outline-light">
+              Ver Inventario Completo
             </a>
           </div>
         </div>
@@ -172,60 +204,92 @@
         <div class="row g-4">
           <!-- Card 1 -->
           <div class="col-12 col-md-6 col-lg-3">
-            <div class="product-card">
-              <img src="https://images.pexels.com/photos/2235071/pexels-photo-2235071.jpeg" class="product-image w-100" alt="Vestido Diseñador">
+            <div class="product-card border-warning">
+              <div class="position-relative">
+                <img src="https://images.pexels.com/photos/2235071/pexels-photo-2235071.jpeg" class="product-image w-100" alt="Vestido Diseñador">
+                <div class="position-absolute top-0 end-0 m-2">
+                  <span class="badge bg-danger">Stock: 2</span>
+                </div>
+              </div>
               <div class="p-3">
                 <h5 class="mb-2">Vestido Negro</h5>
                 <p class="text-muted mb-2">por Ana Martínez</p>
-                <p class="fw-bold mb-3">$299.99</p>
+                <p class="fw-bold mb-2">$299.99</p>
+                <div class="alert alert-warning py-1 px-2 mb-2">
+                  <small><i class="fas fa-exclamation-circle me-1"></i>Solo quedan 2 unidades</small>
+                </div>
                 <div class="d-flex gap-2">
-                  <button class="btn btn-outline-warning btn-sm flex-fill"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-outline-danger btn-sm flex-fill"><i class="fas fa-trash"></i></button>
+                  <button class="btn btn-outline-success btn-sm flex-fill"><i class="fas fa-plus"></i> Reponer</button>
+                  <button class="btn btn-outline-info btn-sm flex-fill"><i class="fas fa-eye"></i> Ver</button>
                 </div>
               </div>
             </div>
           </div>
           <!-- Card 2 -->
           <div class="col-12 col-md-6 col-lg-3">
-            <div class="product-card">
-              <img src="https://images.pexels.com/photos/2002717/pexels-photo-2002717.jpeg" class="product-image w-100" alt="Chaqueta Cuero">
+            <div class="product-card border-warning">
+              <div class="position-relative">
+                <img src="https://images.pexels.com/photos/2002717/pexels-photo-2002717.jpeg" class="product-image w-100" alt="Chaqueta Cuero">
+                <div class="position-absolute top-0 end-0 m-2">
+                  <span class="badge bg-danger">Stock: 1</span>
+                </div>
+              </div>
               <div class="p-3">
                 <h5 class="mb-2">Chaqueta Cuero</h5>
                 <p class="text-muted mb-2">por Carlos Ruiz</p>
-                <p class="fw-bold mb-3">$399.99</p>
+                <p class="fw-bold mb-2">$399.99</p>
+                <div class="alert alert-danger py-1 px-2 mb-2">
+                  <small><i class="fas fa-exclamation-triangle me-1"></i>¡Última unidad!</small>
+                </div>
                 <div class="d-flex gap-2">
-                  <button class="btn btn-outline-warning btn-sm flex-fill"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-outline-danger btn-sm flex-fill"><i class="fas fa-trash"></i></button>
+                  <button class="btn btn-outline-success btn-sm flex-fill"><i class="fas fa-plus"></i> Reponer</button>
+                  <button class="btn btn-outline-info btn-sm flex-fill"><i class="fas fa-eye"></i> Ver</button>
                 </div>
               </div>
             </div>
           </div>
           <!-- Card 3 -->
           <div class="col-12 col-md-6 col-lg-3">
-            <div class="product-card">
-              <img src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg" class="product-image w-100" alt="Blusa Diseñador">
+            <div class="product-card border-warning">
+              <div class="position-relative">
+                <img src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg" class="product-image w-100" alt="Blusa Diseñador">
+                <div class="position-absolute top-0 end-0 m-2">
+                  <span class="badge bg-warning text-dark">Stock: 3</span>
+                </div>
+              </div>
               <div class="p-3">
                 <h5 class="mb-2">Blusa Diseñador</h5>
                 <p class="text-muted mb-2">por María López</p>
-                <p class="fw-bold mb-3">$149.99</p>
+                <p class="fw-bold mb-2">$149.99</p>
+                <div class="alert alert-warning py-1 px-2 mb-2">
+                  <small><i class="fas fa-exclamation-circle me-1"></i>Solo quedan 3 unidades</small>
+                </div>
                 <div class="d-flex gap-2">
-                  <button class="btn btn-outline-warning btn-sm flex-fill"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-outline-danger btn-sm flex-fill"><i class="fas fa-trash"></i></button>
+                  <button class="btn btn-outline-success btn-sm flex-fill"><i class="fas fa-plus"></i> Reponer</button>
+                  <button class="btn btn-outline-info btn-sm flex-fill"><i class="fas fa-eye"></i> Ver</button>
                 </div>
               </div>
             </div>
           </div>
           <!-- Card 4 -->
           <div class="col-12 col-md-6 col-lg-3">
-            <div class="product-card">
-              <img src="https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg" class="product-image w-100" alt="Pantalón Diseñador">
+            <div class="product-card border-warning">
+              <div class="position-relative">
+                <img src="https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg" class="product-image w-100" alt="Pantalón Diseñador">
+                <div class="position-absolute top-0 end-0 m-2">
+                  <span class="badge bg-warning text-dark">Stock: 4</span>
+                </div>
+              </div>
               <div class="p-3">
                 <h5 class="mb-2">Pantalón Diseñador</h5>
                 <p class="text-muted mb-2">por Juan Pérez</p>
-                <p class="fw-bold mb-3">$199.99</p>
+                <p class="fw-bold mb-2">$199.99</p>
+                <div class="alert alert-warning py-1 px-2 mb-2">
+                  <small><i class="fas fa-exclamation-circle me-1"></i>Solo quedan 4 unidades</small>
+                </div>
                 <div class="d-flex gap-2">
-                  <button class="btn btn-outline-warning btn-sm flex-fill"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-outline-danger btn-sm flex-fill"><i class="fas fa-trash"></i></button>
+                  <button class="btn btn-outline-success btn-sm flex-fill"><i class="fas fa-plus"></i> Reponer</button>
+                  <button class="btn btn-outline-info btn-sm flex-fill"><i class="fas fa-eye"></i> Ver</button>
                 </div>
               </div>
             </div>
@@ -240,16 +304,6 @@
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/script.js"></script>
-  <script>
-    // Toggle de sidebar en móvil (por si no lo maneja script.js)
-    const toggleBtn = document.getElementById('sidebarToggle');
-    const sidebar = document.querySelector('.sidebar');
-    if (toggleBtn && sidebar) {
-      toggleBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('show');
-      });
-    }
-  </script>
+  <script src="../assets/js/main.js"></script>
 </body>
 </html>

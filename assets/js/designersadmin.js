@@ -1,71 +1,87 @@
-// assets/js/designers_admin.js
+// Administración de diseñadores
 document.addEventListener('DOMContentLoaded', function () {
-  // Lista en el orden EXACTO que quieres mostrar
+  // Lista de diseñadores en orden específico
   const designers = [
-    'Alter','Amanda','Caro Piña','Coca Moya','Cog by Cal',
-    'Dreamworld','Fancy','Fran Garcia','Game Over','GOIS',
-    'Happy Berry','Hurga','Incorrecta','Irreversible',
-    'Josefina Collection','Kaosfera','Kazú','KELIO',
-    'Kuro Archives','Lena Freestyle','Lisauskas','Mal Vidal',
-    'Marta by Tamar','Mitsuki Studio','Sin Etiquetas',
-    'Valentina Gaymer','Virtual Genesis','Vnneno'
+    'Alter', 'Amanda', 'Caro Piña', 'Coca Moya', 'Cog by Cal',
+    'Dreamworld', 'Fancy', 'Fran Garcia', 'Game Over', 'GOIS',
+    'Happy Berry', 'Hurga', 'Incorrecta', 'Irreversible',
+    'Josefina Collection', 'Kaosfera', 'Kazú', 'KELIO',
+    'Kuro Archives', 'Lena Freestyle', 'Lisauskas', 'Mal Vidal',
+    'Marta by Tamar', 'Mitsuki Studio', 'Sin Etiquetas',
+    'Valentina Gaymer', 'Virtual Genesis', 'Vnneno'
   ];
 
-  const perRow = 4; // 4 columnas por fila
+  // Elementos del DOM
   const grid = document.getElementById('designersGrid');
   const btnEdit = document.getElementById('btnEdit');
   const btnDelete = document.getElementById('btnDelete');
 
+  // Verificar si existe el grid (solo en la página de diseñadores)
   if (!grid) return;
 
-  // Construir la grilla 4×fila
-  for (let i = 0; i < designers.length; i += perRow) {
-    const row = document.createElement('div');
-    row.className = 'row g-3';
+  // Configuración
+  const perRow = 4;
 
-    for (let j = 0; j < perRow; j++) {
-      const name = designers[i + j];
-      const col = document.createElement('div');
-      col.className = 'col-sm';
+  // Construir la grilla de diseñadores
+  function buildDesignersGrid() {
+    for (let i = 0; i < designers.length; i += perRow) {
+      const row = document.createElement('div');
+      row.className = 'row g-3';
 
-      const box = document.createElement('div');
-      box.className = 'designer-box text-center';
-      box.style.minHeight = '110px';
+      for (let j = 0; j < perRow; j++) {
+        const designerName = designers[i + j];
+        const col = document.createElement('div');
+        col.className = 'col-sm';
 
-      box.innerHTML = name ? `<div class="h5 m-0">${name}</div>` : '&nbsp;';
+        const designerBox = document.createElement('div');
+        designerBox.className = 'designer-box text-center';
+        designerBox.style.minHeight = '110px';
+        designerBox.innerHTML = designerName ? `<div class="h5 m-0">${designerName}</div>` : '&nbsp;';
 
-      col.appendChild(box);
-      row.appendChild(col);
+        col.appendChild(designerBox);
+        row.appendChild(col);
+      }
+      grid.appendChild(row);
     }
-    grid.appendChild(row);
   }
 
-  // Utilidades de selección
+  // Limpiar selección
   function clearSelection() {
     document.querySelectorAll('.designer-box.selected').forEach(el => el.classList.remove('selected'));
-    if (btnEdit) btnEdit.disabled = true;
-    if (btnDelete) btnDelete.disabled = true;
+    updateButtons(false);
   }
 
-  function selectBox(box) {
+  // Seleccionar diseñador
+  function selectDesigner(box) {
     clearSelection();
     box.classList.add('selected');
-    if (btnEdit) btnEdit.disabled = false;
-    if (btnDelete) btnDelete.disabled = false;
+    updateButtons(true);
   }
 
-  // Delegación de eventos para seleccionar/deseleccionar
-  grid.addEventListener('click', (e) => {
-    const box = e.target.closest('.designer-box');
-    if (!box) { // click fuera: limpiar
+  // Actualizar estado de botones
+  function updateButtons(enabled) {
+    if (btnEdit) btnEdit.disabled = !enabled;
+    if (btnDelete) btnDelete.disabled = !enabled;
+  }
+
+  // Manejar clicks en la grilla
+  function handleGridClick(event) {
+    const designerBox = event.target.closest('.designer-box');
+    
+    if (!designerBox) {
       clearSelection();
       return;
     }
-    // toggle
-    if (box.classList.contains('selected')) {
+
+    // Toggle selección
+    if (designerBox.classList.contains('selected')) {
       clearSelection();
     } else {
-      selectBox(box);
+      selectDesigner(designerBox);
     }
-  });
+  }
+
+  // Inicializar
+  buildDesignersGrid();
+  grid.addEventListener('click', handleGridClick);
 });

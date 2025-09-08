@@ -582,3 +582,95 @@ color: #fff;
   background-color: rgba(255,255,255,0.1);
   outline: 1px solid #666;
 }
+
+/* Modal Admin*/
+.modal-el .modal-content {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+
+.modal-el .modal-header,
+.modal-el .modal-footer {
+  border-color: #333;
+}
+
+/* Botón de cerrar visible en fondo oscuro */
+.modal-el .btn-close {
+  filter: invert(1) grayscale(100%);
+  opacity: 0.85;
+}
+.modal-el .btn-close:hover {
+  opacity: 1;
+}
+
+/* Mensaje */
+.modal-el .modal-message {
+  color: #e0e0e0; 
+}
+
+/* Icono del título alineado */
+.modal-el .modal-title i {
+  vertical-align: -2px;
+}
+
+
+/*Estilos específicos para la grilla de administrador */
+
+.designer-admin-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.designer-admin-card:hover {
+    transform: translateY(-3px);
+    border-color: #555;
+}
+
+.designer-admin-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+}
+
+.designer-admin-name {
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+}
+
+.designer-admin-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.designer-admin-actions .btn {
+    flex: 1;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+}
+
+@media (max-width: 991px) {
+    .designer-admin-actions .btn-text {
+    display: none;
+    }
+    .designer-admin-actions .btn {
+    padding: 0.4rem;
+    }
+}
